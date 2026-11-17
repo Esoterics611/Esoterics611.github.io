@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Ronnie Rendel">
+<meta property="og:description" content="QA team lead and backend developer in financial technology. Public code, a venture thesis, and the toolkit behind it.">
+<title>Ronnie Rendel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ronnie Rendel: QA team lead and backend developer in financial technology. Public code, a venture thesis, and the toolkit behind it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800;100,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading spine with full-bleed bands. The hero pairs a thesis with a CI-style run log,
+   because the page's argument is "verified, not claimed". Work, venture, toolkit and career follow as bands. */
+:root{
+  --paper:#f7f8f6; --panel:#ffffff; --ink:#122131; --muted:#5b6876; --line:#d9dfe3;
+  --brand:#1f4e79; --brand-soft:#e2ebf3; --pass:#17703f; --pass-soft:#dff0e5; --amber:#a86a00; --amber-soft:#f8ecd2;
+  --term-bg:#122131; --term-fg:#dbe5ee; --term-dim:#8aa0b4; --term-pass:#6fd39b; --term-warn:#f0bf5b;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0d141b; --panel:#141e28; --ink:#e6edf3; --muted:#9aa9b8; --line:#253341;
+  --brand:#86b9e6; --brand-soft:#17293a; --pass:#7fd6a2; --pass-soft:#12291c; --amber:#f0bf5b; --amber-soft:#2b2210;
+  --term-bg:#070c11; --term-fg:#dbe5ee; --term-dim:#7d91a4; --term-pass:#6fd39b; --term-warn:#f0bf5b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0d141b; --panel:#141e28; --ink:#e6edf3; --muted:#9aa9b8; --line:#253341;
+  --brand:#86b9e6; --brand-soft:#17293a; --pass:#7fd6a2; --pass-soft:#12291c; --amber:#f0bf5b; --amber-soft:#2b2210;
+  --term-bg:#070c11; --term-fg:#dbe5ee; --term-dim:#7d91a4; --term-pass:#6fd39b; --term-warn:#f0bf5b; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--body)}
+a{color:var(--brand);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:2px}
+.in{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:30}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.mark{font:800 18px/1 var(--display);font-stretch:112%;letter-spacing:.02em;color:var(--ink);text-decoration:none}
+.mark span{color:var(--brand)}
+nav.top ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav.top ul a{font:500 14px var(--body);color:var(--muted);text-decoration:none}
+nav.top ul a:hover{color:var(--ink)}
+@media (max-width:640px){nav.top ul li.opt{display:none}}
+
+/* hero */
+.hero .in{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:64px 56px}
+@media (max-width:900px){.hero .in{grid-template-columns:1fr;gap:32px;padding-block:40px}}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin:0 0 14px}
+.hero h1{font:800 clamp(38px,6.4vw,68px)/.98 var(--display);font-stretch:112%;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin:20px 0 26px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--body);padding:10px 16px;border-radius:6px;text-decoration:none;border:1px solid var(--ink);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{transform:translateY(-1px)}
+.btn{transition:transform .15s}
+
+.term{background:var(--term-bg);color:var(--term-fg);border-radius:10px;font:13px/1.65 var(--mono);box-shadow:0 18px 40px -22px rgba(10,20,30,.55);min-width:0;overflow:hidden}
+.term .bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--term-dim);font-size:12px}
+.term .bar i{width:10px;height:10px;border-radius:50%;background:#3a4a5a;display:inline-block}
+.term .bar span{margin-left:8px}
+.term pre{margin:0;padding:14px 16px 16px;overflow-x:auto;white-space:pre}
+.term .c{color:var(--term-dim)} .term .p{color:var(--term-pass);font-weight:600} .term .w{color:var(--term-warn)} .term .b{color:#fff;font-weight:600}
+.cursor{display:inline-block;width:8px;height:15px;background:var(--term-pass);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* figures */
+.figs{border-block:1px solid var(--line);background:var(--panel)}
+.figs .in{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.fig{padding:22px 16px;border-left:1px solid var(--line);min-width:0}
+.fig:first-child{border-left:0;padding-left:0}
+.fig b{display:block;font:800 30px/1 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums}
+.fig span{display:block;font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+@media (max-width:900px){.figs .in{grid-template-columns:repeat(3,1fr)}.fig:nth-child(4){border-left:0;padding-left:0}.fig{border-top:1px solid var(--line)}.fig:nth-child(-n+3){border-top:0}}
+@media (max-width:520px){.figs .in{grid-template-columns:repeat(2,1fr)}.fig{border-left:0;padding-left:0;border-top:1px solid var(--line)}.fig:nth-child(-n+2){border-top:0}.fig:nth-child(2n){border-left:1px solid var(--line);padding-left:16px}}
+
+/* sections */
+section.band{padding-block:72px}
+section.band.alt{background:var(--panel);border-block:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:32px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:6px}}
+.sec-head .k{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brand);padding-top:10px}
+.sec-head h2{font:800 clamp(28px,4vw,40px)/1.05 var(--display);font-stretch:112%;margin:0;text-wrap:balance}
+.sec-head p{color:var(--muted);margin:12px 0 0;max-width:62ch}
+
+/* now */
+.now{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media (max-width:860px){.now{grid-template-columns:1fr}}
+.now article{border-top:3px solid var(--brand);padding-top:16px;min-width:0}
+.now h3{font:700 19px/1.25 var(--display);font-stretch:105%;margin:0 0 8px}
+.now p{margin:0 0 10px;color:var(--ink)}
+.now ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
+.now li{margin-bottom:4px}
+
+/* work */
+.lanes{display:grid;gap:40px}
+.lane h3{font:600 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.lane h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0;transition:border-color .15s, transform .15s}
+section.alt .card{background:var(--paper)}
+.card:hover{border-color:var(--brand);transform:translateY(-2px)}
+.card h4{margin:0;font:600 15px var(--mono);word-break:break-word}
+.card h4 a{text-decoration:none}
+.card h4 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.tag{font:500 11.5px var(--mono);padding:3px 8px;border-radius:4px;background:var(--brand-soft);color:var(--brand)}
+.tag.ok{background:var(--pass-soft);color:var(--pass)}
+
+/* venture */
+.venture .in{position:relative}
+.thesis{font:800 clamp(26px,4.6vw,46px)/1.05 var(--display);font-stretch:112%;margin:0 0 8px;text-wrap:balance}
+.thesis span{color:var(--amber)}
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:28px}
+@media (max-width:860px){.v-grid{grid-template-columns:1fr}}
+.v-grid h3{font:700 18px/1.25 var(--display);font-stretch:105%;margin:0 0 10px}
+.v-grid p{margin:0 0 12px;max-width:60ch}
+.gap{display:grid;gap:10px;margin:8px 0 6px}
+.gap .row{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;font-size:14px}
+.gap .bar{height:12px;border-radius:2px;background:var(--brand)}
+.gap .bar.tiny{background:var(--amber);width:3px}
+.gap .row b{font:600 13px var(--mono);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.gap .row{grid-template-columns:1fr auto}.gap .row .track{grid-column:1/-1;order:3}}
+.note-src{font-size:12.5px;color:var(--muted);margin-top:6px}
+.eq{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;padding:16px 18px;margin:6px 0 14px}
+.eq .line{font:600 15px var(--mono);overflow-x:auto;white-space:nowrap}
+.eq p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+ol.principles{margin:0;padding-left:22px}
+ol.principles li{margin-bottom:10px;padding-left:4px}
+ol.principles b{font-weight:600}
+.disclaimer{margin-top:30px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;max-width:80ch}
+
+/* toolkit */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.filters button{font:500 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 13px;border-radius:999px;cursor:pointer}
+section.alt .filters button{background:var(--paper)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tk{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0 36px}
+.tk .t{padding:14px 0;border-top:1px solid var(--line);min-width:0}
+.tk dt{font:600 15.5px var(--body);margin:0}
+.tk dt small{font:400 12px var(--mono);color:var(--muted);margin-left:6px}
+.tk dd{margin:4px 0 0;font-size:14.5px}
+.tk dd .how{display:block;color:var(--muted);margin-top:4px;font-size:14px}
+
+/* career */
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 22px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--brand)}
+.tl li.now-dot::before{background:var(--brand)}
+.tl .yr{font:600 12.5px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.tl h3{margin:2px 0 4px;font:700 17px/1.3 var(--display);font-stretch:105%}
+.tl p{margin:0;font-size:14.5px;max-width:70ch}
+.edu{margin-top:12px;font-size:14.5px;color:var(--muted)}
+
+footer{padding-block:40px 56px;border-top:1px solid var(--line)}
+footer .in{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:baseline}
+footer p{margin:0;font-size:13.5px;color:var(--muted);max-width:70ch}
+footer .links{display:flex;gap:18px;font-weight:500}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Sections">
+  <div class="in">
+    <a class="mark" href="#top">RONNIE<span>/</span>RENDEL</a>
+    <ul>
+      <li><a href="#now">Now</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#venture">Venture</a></li>
+      <li class="opt"><a href="#toolkit">Toolkit</a></li>
+      <li class="opt"><a href="#career">Career</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="in">
+    <div>
+      <p class="eyebrow">QA Team Lead · Backend Developer · Financial Technology</p>
+      <h1>Systems that move money should <em>prove</em> they work.</h1>
+      <p class="lead">I lead quality for a central-bank digital currency platform, build trading infrastructure that never holds a client's key, and publish code that tests itself. Twenty years in financial technology, from trading floors to custody.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://github.com/Esoterics611" target="_blank" rel="noopener">GitHub · Esoterics611</a>
+        <a class="btn" href="https://www.linkedin.com/in/ronnierendel" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="#work">See the work</a>
+      </div>
+    </div>
+    <div class="term" role="img" aria-label="Test run on 17 November 2026: 902 tests passed across five public repositories, and 16 of 16 custody controls held.">
+      <div class="bar"><i></i><i></i><i></i><span>verify.log · 17 Nov 2026</span></div>
+<pre><span class="c">$ for r in $(public_repos); do run_tests $r; done</span>
+custody-control-assurance-lab  <span class="p">84 passed</span>   1 skipped
+custody-lab                   <span class="p">268 passed</span>  25 skipped
+argus                         <span class="p">223 passed</span>   <span class="w">5 env</span>
+sal-capital                   <span class="p">295 passed</span>   2 skipped
+ebay-automation  (offline)     <span class="p">32 passed</span>
+<span class="c">────────────────────────────────────────────────</span>
+<span class="b">902 passed</span> · attack simulations <span class="p">16/16 held</span>
+<span class="c">$</span> <span class="cursor"></span></pre>
+    </div>
+  </div>
+</header>
+
+<div class="figs" aria-label="Key figures">
+  <div class="in">
+    <div class="fig"><b>20+</b><span>years in financial technology</span></div>
+    <div class="fig"><b>7</b><span>people on the QA team I lead</span></div>
+    <div class="fig"><b>~17</b><span>microservices under my E2E suite</span></div>
+    <div class="fig"><b>12</b><span>real-time dashboards for the client's NOC</span></div>
+    <div class="fig"><b>105×</b><span>orders/s placed by the FIX gateway after profiling (1.4 → 147.9)</span></div>
+    <div class="fig"><b>902</b><span>tests passing in my public repos</span></div>
+  </div>
+</div>
+
+<section class="band" id="now">
+  <div class="in">
+    <div class="sec-head">
+      <div class="k">Now · Republic (formerly INX)</div>
+      <div><h2>Backend developer, and QA team lead on the CBDC project</h2>
+      <p>Republic runs a venue for tokenized securities and digital assets, and built a wholesale and retail CBDC platform with Sicpa for the Bank of Israel. I own the platform's end-to-end quality and I am the final escalation point for its production incidents.</p></div>
+    </div>
+    <div class="now">
+      <article>
+        <h3>Quality for a central bank</h3>
+        <p>I lead a team of seven, including a manual tester and a cyber security analyst, as assistant to the CTO. We built the test methodology from scratch.</p>
+        <ul><li>Playwright/TypeScript E2E across ~17 NestJS microservices</li><li>API tests in Jest, mobile in Appium, parametrized Rust tests</li><li>Daily CI regression; strict type checking as a build gate</li></ul>
+      </article>
+      <article>
+        <h3>A FIX gateway that holds no keys</h3>
+        <p>I designed and built the exchange's non-custodial FIX gateway: clients sign every request, and a build check keeps gateway code away from signing code.</p>
+        <ul><li>Profiled under load; placed orders went from 1.4/s to 147.9/s</li><li>Hour-long soak tests; 450 tests behind ruff and strict mypy</li><li>A 36-scenario certification suite that client firms run</li></ul>
+      </article>
+      <article>
+        <h3>Observability and AI in the loop</h3>
+        <p>Twelve real-time Kibana dashboards for the client's NOC watch the daily test runs, with logs and traces tied to each test.</p>
+        <ul><li>Elasticsearch ingest pipelines for KYC, MCC and trace enrichment</li><li>Claude Code agents for code review, security checks, PR gating and test upkeep</li><li>Data-population scenarios that drive sales demos</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="work">
+  <div class="in">
+    <div class="sec-head">
+      <div class="k">Work you can run</div>
+      <div><h2>Public code, with its own tests</h2>
+      <p>Each repository runs end to end and checks itself. Badges show the last verified run.</p></div>
+    </div>
+    <div class="lanes">
+      <div class="lane"><h3>Security and assurance</h3><div class="cards">
+        <article class="card"><h4><a href="https://github.com/Esoterics611/custody-control-assurance-lab" target="_blank" rel="noopener">custody-control-assurance-lab</a></h4><p>Breach-and-attack simulation for a custody governance stack. Sixteen attacks, each asserting that a control blocks, escalates or flags; mapped to MITRE ATT&amp;CK and NIST CSF 2.0; drift against a known-good baseline fails CI.</p><div class="tags"><span class="tag ok">84 passed · 16/16 controls</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Playwright</span><span class="tag">SARIF</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/sentinel-shield" target="_blank" rel="noopener">sentinel-shield</a></h4><p>On-device Android anti-spyware with eight detection engines: permissions, 110+ stalkerware signatures, accessibility and device-admin abuse, C2 and DGA traffic, and mercenary-spyware indicators. No root, no cloud.</p><div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">CI unit tests</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/argus" target="_blank" rel="noopener">argus</a></h4><p>Browser automation from the inside: scripts injected into third-party pages before load, XHR and WebSocket capture, and a fingerprint lab that measures which automated browsers a detection page flags.</p><div class="tags"><span class="tag ok">223 passed</span><span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">CDP</span></div></article>
+      </div></div>
+      <div class="lane"><h3>Custody and digital assets</h3><div class="cards">
+        <article class="card"><h4><a href="https://github.com/Esoterics611/custody-lab" target="_blank" rel="noopener">custody-lab</a></h4><p>How an institution holds bitcoin so no single person or machine can move it: FIX orders, netting, a default-deny policy engine, 2-of-3 FROST signing across three processes, regtest settlement, proof of reserves, and a manual that teaches all of it.</p><div class="tags"><span class="tag ok">268 passed</span><span class="tag">Python</span><span class="tag">Rust</span><span class="tag">TypeScript</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/nexus-protocol" target="_blank" rel="noopener">nexus-protocol</a></h4><p>Institutional contracts on Base Sepolia: ERC-4626 vaults, an upgradeable stablecoin with mint controls, KYC transfer restrictions, a NAV oracle, an on-chain audit log and timelocked governance.</p><div class="tags"><span class="tag">Solidity</span><span class="tag">Hardhat</span><span class="tag">Base</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/manufacturer" target="_blank" rel="noopener">manufacturer</a></h4><p>The issuer engine for the venture below: a shekel-denominated bill fund tokenized on Base, subscribed and redeemed in USDC.</p><div class="tags"><span class="tag">TypeScript</span><span class="tag">Base</span><span class="tag">USDC</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/vault" target="_blank" rel="noopener">vault</a></h4><p>Creators encrypt work, store it on IPFS and sell access on Base; a proxy re-encryption service hands buyers a key without exposing the creator's.</p><div class="tags"><span class="tag">Solidity</span><span class="tag">Flutter</span><span class="tag">IPFS</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/vanguard" target="_blank" rel="noopener">vanguard</a></h4><p>A DAO that runs like a disciplined firm: ranks, funded bounties and pay by delivered work, enforced on chain. <a href="https://esoterics611.github.io/vanguard/" target="_blank" rel="noopener">Live academy and demo</a>.</p><div class="tags"><span class="tag">Solidity</span><span class="tag">SvelteKit</span><span class="tag">Flutter</span></div></article>
+      </div></div>
+      <div class="lane"><h3>Quality engineering, trading and AI</h3><div class="cards">
+        <article class="card"><h4><a href="https://github.com/Esoterics611/ebay-automation" target="_blank" rel="noopener">ebay-automation</a></h4><p>Playwright and pytest in a strict page-object and services architecture, data-driven from YAML, with CI and a <a href="https://esoterics611.github.io/ebay-automation/" target="_blank" rel="noopener">live Allure report</a>.</p><div class="tags"><span class="tag ok">32 offline passed</span><span class="tag">Python</span><span class="tag">Allure</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/sal-capital" target="_blank" rel="noopener">sal-capital</a></h4><p>A buy-side quant desk: portfolio construction, factor investing, options income and hedging, built with the same engineering discipline as meridian-markets.</p><div class="tags"><span class="tag ok">295 passed</span><span class="tag">TypeScript</span><span class="tag">NestJS</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/meridian-markets" target="_blank" rel="noopener">meridian-markets</a></h4><p>A paper-trading desk on live market data: market making, statistical arbitrage and funding carry, where every result must survive fees and out-of-sample tests before it counts.</p><div class="tags"><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span></div></article>
+        <article class="card"><h4><a href="https://github.com/Esoterics611/maayan" target="_blank" rel="noopener">maayan</a></h4><p>Local-first retrieval over primary texts that answers only from its sources, cites each one, refuses when nothing supports an answer, and learns from an expert's corrections.</p><div class="tags"><span class="tag">Python</span><span class="tag">RAG</span></div></article>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band venture" id="venture">
+  <div class="in">
+    <div class="sec-head">
+      <div class="k">Venture · research</div>
+      <div><p class="thesis">BlackRock : NYSE :: <span>NewCo : INX</span></p>
+      <p>A tokenized FX and fixed-income issuer, worked out from first principles. Design the indices, build defined-risk products on them, issue them as tokens, and rent every regulated function from a venue that already holds the licence.</p></div>
+    </div>
+
+    <div class="v-grid">
+      <div>
+        <h3>The gap</h3>
+        <p>The two largest markets in finance have barely been tokenized at all.</p>
+        <div class="gap" role="img" aria-label="Daily turnover: FX 9.6 trillion dollars, OTC interest-rate derivatives 7.9 trillion dollars. Entire tokenized real-world-asset market: about 20 billion dollars.">
+          <div class="row"><span>FX, per day</span><div class="track"><div class="bar" style="width:100%"></div></div><b>$9.6tn</b></div>
+          <div class="row"><span>OTC rates, per day</span><div class="track"><div class="bar" style="width:82%"></div></div><b>$7.9tn</b></div>
+          <div class="row"><span>All tokenized RWAs</span><div class="track"><div class="bar tiny"></div></div><b>~$20bn</b></div>
+        </div>
+        <p class="note-src">The tokenized line is total market value, not daily turnover: at this scale it is a hairline. FX and rates make up almost none of it. Figures from my research, September 2026.</p>
+
+        <h3 style="margin-top:22px">The first product: a shekel that pays</h3>
+        <div class="eq"><div class="line">USDC : USDY :: BILS : this</div><p>Israel's regulated shekel stablecoin may not pay yield. At a 4.00% policy rate, holding it costs 4% a year.</p></div>
+        <p>A shekel-denominated bill fund, tokenized on Base and subscribed and redeemed in USDC. The fund holds US Treasury bills and buys shekels forward. Covered interest parity delivers the shekel rate and the dollar rate cancels, so the token's NAV accrues at roughly the Bank of Israel rate, less a fee. The <a href="https://github.com/Esoterics611/manufacturer" target="_blank" rel="noopener">issuer engine</a> is public.</p>
+      </div>
+      <div>
+        <h3>The principles it runs on</h3>
+        <ol class="principles">
+          <li><b>The arbitrage is the product.</b> Price tracks NAV because closing the gap pays, not because anyone promised it.</li>
+          <li><b>The floor is ours.</b> Market makers hold rights, not duties, so a capped, issuer-funded redemption facility at NAV minus a published haircut sets the floor and the spread ceiling.</li>
+          <li><b>Boring first.</b> Version one is a fully funded bill basket. Each later product adds exactly one regulatory question.</li>
+          <li><b>Own the rulebook.</b> ETF sponsors pay index providers; writing our own indices keeps that rent and the fee advantage.</li>
+          <li><b>Microstructure has a kill criterion.</b> Coarse ticks or low rate limits each kill the arbitrage; refuse to launch into them.</li>
+          <li><b>Honest numbers, or nothing.</b> If the engine cannot compute a product's risk honestly, the product does not ship.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="disclaimer">This is independent research and an engineering prototype in my own name. It is not an offer of securities or investment advice, and it does not describe any product of Republic, INX or any other company.</p>
+  </div>
+</section>
+
+<section class="band alt" id="toolkit">
+  <div class="in">
+    <div class="sec-head">
+      <div class="k">Toolkit</div>
+      <div><h2>What I work with, and where I've used it</h2>
+      <p>Filter by area.</p></div>
+    </div>
+    <div class="filters" role="toolbar" aria-label="Filter the toolkit by area">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="qa" aria-pressed="false">Testing</button>
+      <button type="button" data-f="sec" aria-pressed="false">Security</button>
+      <button type="button" data-f="be" aria-pressed="false">Backend</button>
+      <button type="button" data-f="chain" aria-pressed="false">Digital assets</button>
+      <button type="button" data-f="ops" aria-pressed="false">Observability and AI</button>
+    </div>
+    <dl class="tk">
+      <div class="t" data-a="qa"><dt>Playwright<small>TS · Python</small></dt><dd>Browser automation with auto-waiting, web-first assertions and replayable traces.<span class="how">CBDC E2E across ~17 services; strict page objects in custody-control-assurance-lab and ebay-automation; in-page scripts in argus.</span></dd></div>
+      <div class="t" data-a="qa"><dt>pytest<small>Python</small></dt><dd>Fixtures, parametrized cases, markers and parallel runs.<span class="how">450 tests on the FIX gateway; 268 in custody-lab; 223 in argus.</span></dd></div>
+      <div class="t" data-a="qa"><dt>Jest · Appium</dt><dd>API and service tests in TypeScript; native mobile automation over WebDriver.<span class="how">CBDC API and mobile regression; 295 tests in sal-capital.</span></dd></div>
+      <div class="t" data-a="qa"><dt>Load, soak and profiling<small>py-spy</small></dt><dd>Find the bottleneck, name its cause, prove the fix holds for an hour.<span class="how">The FIX gateway's HTTP/2 move took placed orders from 1.4/s to 147.9/s with zero refusals.</span></dd></div>
+      <div class="t" data-a="qa"><dt>Certification and contract tests</dt><dd>Prove that two independently written sides agree on the rules.<span class="how">A 36-scenario FIX certification catalogue; client rules checked against gateway constants.</span></dd></div>
+      <div class="t" data-a="sec"><dt>Breach and attack simulation</dt><dd>Attack your own controls on every build and fail when one stops holding.<span class="how">Sixteen scenarios in custody-control-assurance-lab, 16/16 holding.</span></dd></div>
+      <div class="t" data-a="sec"><dt>MITRE ATT&amp;CK · NIST CSF 2.0</dt><dd>The shared vocabulary for attacker techniques and for security functions.<span class="how">Every simulation maps to both, exported as an ATT&amp;CK Navigator layer.</span></dd></div>
+      <div class="t" data-a="sec"><dt>Mobile threat detection</dt><dd>Spyware found by its footprint: permissions, accessibility abuse, C2 and DGA traffic.<span class="how">Eight on-device engines in sentinel-shield.</span></dd></div>
+      <div class="t" data-a="sec"><dt>Key isolation and approvals</dt><dd>Default-deny policy, four-eyes, quorum, single-use authorisations, replay protection.<span class="how">The FIX gateway holds no keys; custody-lab signers refuse a reused approval.</span></dd></div>
+      <div class="t" data-a="be"><dt>FIX protocol<small>4.4 · 5.0 SP2</small></dt><dd>The message standard of electronic trading, from session logon to execution reports.<span class="how">Two exchange gateways, a reference client, a desktop client and a certification suite.</span></dd></div>
+      <div class="t" data-a="be"><dt>Python and TypeScript services</dt><dd>asyncio with strict typing; NestJS with GraphQL, RabbitMQ and Redis.<span class="how">The FIX gateway in Python; the CBDC platform and API gateway in NestJS.</span></dd></div>
+      <div class="t" data-a="be"><dt>Money-safe data</dt><dd>Decimal-only amounts, SERIALIZABLE isolation, append-only ledgers, transactional outboxes.<span class="how">The FIX gateway rejects floats at the conversion point.</span></dd></div>
+      <div class="t" data-a="chain"><dt>Threshold signing<small>FROST</small></dt><dd>A group signs together without anyone rebuilding the key.<span class="how">2-of-3 signing across three processes in custody-lab, checked against BIP340 vectors.</span></dd></div>
+      <div class="t" data-a="chain"><dt>Solidity on Base</dt><dd>ERC-4626 vaults, upgradeable proxies, governance and access control.<span class="how">nexus-protocol, vanguard and vault on Base Sepolia.</span></dd></div>
+      <div class="t" data-a="chain"><dt>CBDC platforms</dt><dd>Wholesale and retail central-bank money, from issuance to redemption.<span class="how">Quality owner for the platform Republic delivers to the Bank of Israel.</span></dd></div>
+      <div class="t" data-a="ops"><dt>Elasticsearch and Kibana</dt><dd>Ingest pipelines that enrich every event, dashboards, KQL and APM traces.<span class="how">Twelve real-time NOC dashboards on the CBDC platform.</span></dd></div>
+      <div class="t" data-a="ops"><dt>Claude Code agents</dt><dd>Agents, hooks, skills and MCP working against a written standard, reviewed before merge.<span class="how">Code review, security checks, PR gating and test maintenance at Republic.</span></dd></div>
+      <div class="t" data-a="ops"><dt>Retrieval with citations</dt><dd>Answer only from retrieved sources, cite each one, refuse when unsupported.<span class="how">maayan.</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="band" id="career">
+  <div class="in">
+    <div class="sec-head">
+      <div class="k">Career</div>
+      <div><h2>Trading floors to custody</h2></div>
+    </div>
+    <ol class="tl">
+      <li class="now-dot"><span class="yr">2022 – now</span><h3>Republic (formerly INX) · Backend Developer; QA &amp; Automation Lead, CBDC</h3><p>Quality for the Bank of Israel CBDC platform; the non-custodial FIX gateway, its reference client and certification suite.</p></li>
+      <li><span class="yr">2020 – 2022</span><h3>INX · Backend / Integration Engineer</h3><p>The exchange's first FIX gateway, trade messaging over RabbitMQ, and FIX test applications.</p></li>
+      <li><span class="yr">2020</span><h3>DAO4Peace · Blockchain Developer</h3><p>Ethereum contracts for governance, treasury and access control.</p></li>
+      <li><span class="yr">2018 – 2020</span><h3>Independent · Data Science and Data Engineering</h3><p>Classification, entity-recognition and sentiment models; enterprise dashboards and knowledge graphs.</p></li>
+      <li><span class="yr">2012 – 2018</span><h3>New Era Solutions · Partner and R&amp;D Manager</h3><p>Led a team of seven reporting to C-level; general-ledger integration for Meridian Capital Group across $50B+ in annual volume.</p></li>
+      <li><span class="yr">2006 – 2012</span><h3>SeaView Analytics · Engagement Manager</h3><p>Low-latency trading analytics and algorithmic order routing for tier-1 investment banks.</p></li>
+      <li><span class="yr">2001 – 2003</span><h3>Trading Technologies · Product Manager, X_Trader</h3><p>Order routing and trade matching for global equities and derivatives.</p></li>
+    </ol>
+    <p class="edu">B.Sc. Mathematics, minor in Computer Science, Northwestern University · US Army, Stinger Missile Team Chief · KamaTech accelerator · English and Hebrew</p>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <p>Ronnie Rendel · Givat Shmuel, Israel. Every test count on this page comes from a run on 17 November 2026; "5 env" marks argus tests that need a browser build the test machine lacked.</p>
+    <div class="links"><a href="https://github.com/Esoterics611" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ronnierendel" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.filters button'));
+  var items=[].slice.call(document.querySelectorAll('.tk .t'));
+  function apply(f){
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f))});
+    items.forEach(function(t){t.hidden=!(f==='all'||t.dataset.a===f)});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.f)})});
+})();
+</script>
+
+</body>
+</html>
