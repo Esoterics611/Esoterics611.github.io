@@ -1,0 +1,2762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-paced, academically thorough course on test automation with Python, Playwright, and clean architecture.">
+      
+      
+      
+      
+        <link rel="prev" href="../../part7-advanced/32-codegen-and-debugging/">
+      
+      
+        <link rel="next" href="../34-self-check-quizzes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Chapter 33 — Hands-On Labs - Playwright + Python QA Automation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-33-hands-on-labs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Playwright + Python QA Automation" class="md-header__button md-logo" aria-label="Playwright + Python QA Automation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Playwright + Python QA Automation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 33 — Hands-On Labs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Playwright + Python QA Automation" class="md-nav__button md-logo" aria-label="Playwright + Python QA Automation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Playwright + Python QA Automation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Python for Automation Engineers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Python for Automation Engineers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1-python/01-setup-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 — Setup &amp; Tooling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1-python/02-python-from-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 — Python Essentials for the Working Programmer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1-python/03-classes-and-oop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 — Object-Oriented Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1-python/04-typing-and-protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 — Typing, Generics &amp; Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1-python/05-decimal-and-money/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 — Decimal, Money &amp; Context Managers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Playwright Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Playwright Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/06-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 — How Playwright Is Built
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/07-locators-and-auto-waiting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 — Locators &amp; Auto-Waiting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/08-locator-strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 — Choosing the Right Locator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/09-xpath-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 — XPath, Properly Understood
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/10-actions-and-assertions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 — Actions &amp; Assertions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2-playwright/11-navigation-network-tabs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 — Navigation, Network, Tabs &amp; Cookies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — pytest & Test Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — pytest & Test Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3-pytest/12-pytest-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 — pytest Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3-pytest/13-fixtures-and-di/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 — Fixtures &amp; Dependency Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3-pytest/14-data-driven-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 — Data-Driven Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3-pytest/15-markers-parallelism-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 — Markers, Parallelism &amp; the pytest-playwright Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3-pytest/16-the-test-pyramid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 — The Test Pyramid &amp; Why Unit Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Test Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Test Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4-architecture/17-solid-for-testers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17 — SOLID &amp; SRP for Test Frameworks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4-architecture/18-page-object-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18 — The Page Object Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4-architecture/19-components-and-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19 — Component Objects &amp; the Base Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4-architecture/20-service-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20 — The Service Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4-architecture/21-config-and-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21 — Configuration &amp; Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Robustness, Reporting, Review
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Robustness, Reporting, Review
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5-robustness/22-smart-locators-and-resilience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22 — Smart Locators &amp; Resilience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5-robustness/23-pagination-variants-prices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23 — Three Dynamics: Pagination, Variants &amp; Prices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5-robustness/24-flakiness-and-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 24 — Flakiness &amp; Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5-robustness/25-reporting-and-ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 25 — Reporting &amp; Continuous Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5-robustness/26-reviewing-ai-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 26 — Reviewing AI-Generated Test Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Capstone & Interview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Capstone & Interview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part6-capstone/27-building-the-ebay-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 27 — Capstone: The Reference Suite End to End
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VII — Beyond the Basics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VII — Beyond the Basics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part7-advanced/29-network-mocking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 29 — Network Interception &amp; Mocking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part7-advanced/30-api-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 30 — API Testing with Playwright
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part7-advanced/31-accessibility-and-visual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 31 — Accessibility &amp; Visual Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part7-advanced/32-codegen-and-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 32 — Authoring Tools &amp; Advanced Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VIII — Practice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VIII — Practice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 33 — Hands-On Labs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 33 — Hands-On Labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-your-first-robust-test-chapters-7-8-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1 — Your first robust test (Chapters 7, 8, 10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-a-pure-function-and-its-unit-tests-chapters-5-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2 — A pure function and its unit tests (Chapters 5, 16)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-refactor-into-a-page-object-chapters-18-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 3 — Refactor into a Page Object (Chapters 18, 19)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-add-a-service-layer-chapters-17-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 4 — Add a service layer (Chapters 17, 20)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-5-data-drive-it-chapters-13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 5 — Data-drive it (Chapters 13, 14)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-6-mock-an-error-state-chapter-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 6 — Mock an error state (Chapter 29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-7-mock-three-states-of-a-real-api-chapter-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 7 — Mock three states of a real API (Chapter 29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-8-use-the-api-client-chapter-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 8 — Use the API client (Chapter 30)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-9-assert-structure-with-an-aria-snapshot-chapter-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 9 — Assert structure with an aria snapshot (Chapter 31)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-10-codegen-then-refactor-chapter-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 10 — Codegen, then refactor (Chapter 32)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-11-drive-the-trace-viewer-chapter-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 11 — Drive the Trace Viewer (Chapter 24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-12-review-the-ai-snippet-cold-chapter-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 12 — Review the AI snippet cold (Chapter 26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capstone-lab-your-own-miniature-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capstone lab — your own miniature suite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34-self-check-quizzes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 34 — Self-Check Quizzes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices — The Little Things
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices — The Little Things
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/A-decorators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A — Decorators, In Depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/B-regular-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B — Regular Expressions You Actually Need
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/C-python-odds-and-ends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix C — Python Odds &amp; Ends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendices/D-cheat-sheet-and-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix D — Cheat Sheet &amp; Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../print_page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Print site (save as PDF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-your-first-robust-test-chapters-7-8-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1 — Your first robust test (Chapters 7, 8, 10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-a-pure-function-and-its-unit-tests-chapters-5-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2 — A pure function and its unit tests (Chapters 5, 16)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-refactor-into-a-page-object-chapters-18-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 3 — Refactor into a Page Object (Chapters 18, 19)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-add-a-service-layer-chapters-17-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 4 — Add a service layer (Chapters 17, 20)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-5-data-drive-it-chapters-13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 5 — Data-drive it (Chapters 13, 14)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-6-mock-an-error-state-chapter-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 6 — Mock an error state (Chapter 29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-7-mock-three-states-of-a-real-api-chapter-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 7 — Mock three states of a real API (Chapter 29)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-8-use-the-api-client-chapter-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 8 — Use the API client (Chapter 30)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-9-assert-structure-with-an-aria-snapshot-chapter-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 9 — Assert structure with an aria snapshot (Chapter 31)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-10-codegen-then-refactor-chapter-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 10 — Codegen, then refactor (Chapter 32)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-11-drive-the-trace-viewer-chapter-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 11 — Drive the Trace Viewer (Chapter 24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-12-review-the-ai-snippet-cold-chapter-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 12 — Review the AI snippet cold (Chapter 26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capstone-lab-your-own-miniature-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capstone lab — your own miniature suite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-33-hands-on-labs">Chapter 33 — Hands-On Labs<a class="headerlink" href="#chapter-33-hands-on-labs" title="Permanent link">&para;</a></h1>
+<p>Reading teaches recognition; building teaches understanding. These labs take you from a single
+passing test to a small, properly-layered framework, using free public practice sites. Do them in
+order — each builds on the last. Every lab states a goal, gives staged hints, and hides a solution
+sketch you should only open <em>after</em> attempting it.</p>
+<div class="admonition tip">
+<p class="admonition-title">Practice sites used here</p>
+<ul>
+<li><strong><code>https://playwright.dev</code></strong> — stable docs site, good for locators and assertions.</li>
+<li><strong><code>https://www.saucedemo.com</code></strong> — a demo shop with login, products, and a cart (great for POM).</li>
+<li><strong><code>https://demo.playwright.dev/api-mocking</code></strong> — a tiny app that calls a JSON API (for mocking).</li>
+<li><strong><code>https://the-internet.herokuapp.com</code></strong> — many isolated UI challenge pages.</li>
+</ul>
+<p>Set up a fresh project first (<code>uv init</code>, <code>uv add playwright</code>, <code>uv add --dev pytest
+pytest-playwright</code>, <code>uv run playwright install chromium</code>) as in
+<a href="../../part1-python/01-setup-and-tooling/">Chapter 1</a>.</p>
+</div>
+<hr />
+<h2 id="lab-1-your-first-robust-test-chapters-7-8-10">Lab 1 — Your first robust test (Chapters 7, 8, 10)<a class="headerlink" href="#lab-1-your-first-robust-test-chapters-7-8-10" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Write a test that searches <code>playwright.dev</code> and verifies results appear, using only
+role/text locators and web-first assertions — no <code>time.sleep</code>, no CSS classes.</p>
+<p><strong>Steps.</strong>
+1. Navigate to <code>https://playwright.dev</code>.
+2. Open the search (press the search button/icon), type "locator".
+3. Assert that a results listbox becomes visible and that the first result contains "locator".</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>The search trigger is a <code>button</code>; the input is a <code>searchbox</code>/<code>textbox</code>. Use <code>get_by_role</code>.</li>
+<li>For the results, assert with <code>expect(...).to_be_visible()</code> — never <code>assert is_visible()</code>.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Page</span><span class="p">,</span> <span class="n">expect</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_search_docs</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">):</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://playwright.dev&quot;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Search&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;searchbox&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;locator&quot;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;listbox&quot;</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">expect</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">to_be_visible</span><span class="p">()</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">expect</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;option&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">)</span><span class="o">.</span><span class="n">to_contain_text</span><span class="p">(</span><span class="s2">&quot;locator&quot;</span><span class="p">,</span> <span class="n">ignore_case</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+<em>What you practised:</em> role locators, auto-waiting, web-first assertions. If a site's exact roles
+differ, use <code>playwright codegen</code> (Chapter 32) to discover them — then keep the role-based result.</p>
+</details>
+<hr />
+<h2 id="lab-2-a-pure-function-and-its-unit-tests-chapters-5-16">Lab 2 — A pure function and its unit tests (Chapters 5, 16)<a class="headerlink" href="#lab-2-a-pure-function-and-its-unit-tests-chapters-5-16" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Write and exhaustively unit-test a pure <code>parse_price</code> function — no browser at all.</p>
+<p><strong>Steps.</strong>
+1. Write <code>parse_price(text: str) -&gt; Decimal</code> that anchors on <code>$</code>, handles thousands commas, takes the
+   lower bound of a range, and raises <code>ValueError</code> on garbage.
+2. Write parametrized tests covering: plain, US-prefixed, thousands, a range, the "(3 items) $50"
+   trap, and several unparseable inputs.</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>Reuse the regex from <a href="../../part1-python/05-decimal-and-money/">Chapter 5</a>:
+  <code>re.compile(r"\$\s*(-?\d{1,3}(?:,\d{3})*(?:\.\d+)?)")</code>.</li>
+<li>Build the <code>Decimal</code> from a <em>string</em> (<code>match.group(1).replace(",", "")</code>), never a float.</li>
+<li>Use <code>@pytest.mark.parametrize</code> for the valid cases and <code>pytest.raises</code> for the garbage.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>See <a href="../../part3-pytest/16-the-test-pyramid/">Chapter 16 §16.3</a> for the parser and the full
+parametrized test. <em>What you practised:</em> purity, <code>Decimal</code> correctness, parametrization, and the
+test-pyramid principle — these ~20 tests run in well under a tenth of a second with no browser.</p>
+</details>
+<hr />
+<h2 id="lab-3-refactor-into-a-page-object-chapters-18-19">Lab 3 — Refactor into a Page Object (Chapters 18, 19)<a class="headerlink" href="#lab-3-refactor-into-a-page-object-chapters-18-19" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Log in to <code>saucedemo.com</code> and assert you reach the products page — first as a scrappy test,
+then refactored into a <code>LoginPage</code> component owning the selectors.</p>
+<p><strong>Steps.</strong>
+1. Write a working but "ugly" test: raw <code>page.fill</code>/<code>page.click</code> with selectors inline.
+2. Create a <code>LoginPage(BaseComponent)</code> with <code>_SEL_</code> constants and a <code>login(username, password)</code>
+   method; add an <code>is_logged_in()</code> query returning a <code>bool</code>.
+3. Rewrite the test to use it. Confirm the test body now contains <em>zero</em> selectors.</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>Standard saucedemo creds are shown on its login page (e.g. <code>standard_user</code> /
+  <code>secret_sauce</code>).</li>
+<li><code>login()</code> should <em>do</em> (fill + click); a separate method should <em>report</em> state (return a bool) —
+  keep doing and reporting separate.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">LoginPage</span><span class="p">(</span><span class="n">BaseComponent</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">_SEL_USER</span> <span class="o">=</span> <span class="s2">&quot;Username&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">_SEL_PASS</span> <span class="o">=</span> <span class="s2">&quot;Password&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">_SEL_SUBMIT</span> <span class="o">=</span> <span class="s2">&quot;Login&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_placeholder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_SEL_USER</span><span class="p">)</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_placeholder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_SEL_PASS</span><span class="p">)</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_SEL_SUBMIT</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">is_on_products</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_text</span><span class="p">(</span><span class="s2">&quot;Products&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_visible</span><span class="p">()</span>
+</span></code></pre></div>
+<em>What you practised:</em> hiding selectors behind intent, <code>_SEL_</code> constants, separating action
+(<code>login</code>) from query (<code>is_on_products</code>). Note the page object has <em>no assertions</em> — the test
+asserts on <code>is_on_products()</code>.</p>
+</details>
+<hr />
+<h2 id="lab-4-add-a-service-layer-chapters-17-20">Lab 4 — Add a service layer (Chapters 17, 20)<a class="headerlink" href="#lab-4-add-a-service-layer-chapters-17-20" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> On saucedemo, build a flow that spans pages — log in, add the two cheapest products to the
+cart, and return the cart count — and put that flow in a <em>service</em>, not a page object.</p>
+<p><strong>Steps.</strong>
+1. Add a <code>ProductsPage</code> component that can list product <code>(name, price)</code> pairs and add a product to the
+   cart by name.
+2. Write a <code>ShoppingService</code> whose constructor takes the <code>page</code>, composes <code>LoginPage</code> and
+   <code>ProductsPage</code>, and has <code>add_cheapest(n)</code> returning the names added.
+3. Write a test that logs in, calls <code>add_cheapest(2)</code>, and asserts the cart badge shows <code>2</code>.</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>"The two cheapest" is a <em>policy</em> decision (sort by price, take the first two) — that belongs in
+  the service, not in <code>ProductsPage</code>. The page object only <em>reports</em> prices.</li>
+<li>Parse prices into <code>Decimal</code> (Lab 2's function) before sorting.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>The service sorts the page's reported <code>(name, Decimal)</code> pairs, slices the cheapest <code>n</code>, and calls
+<code>products.add_to_cart(name)</code> for each. <em>What you practised:</em> the mechanism/policy split — the
+component reports prices (mechanism), the service decides which to add (policy) — and a service
+composing multiple components. This is the
+<a href="../../part4-architecture/20-service-layer/">Chapter 20</a> pattern in miniature.</p>
+</details>
+<hr />
+<h2 id="lab-5-data-drive-it-chapters-13-14">Lab 5 — Data-drive it (Chapters 13, 14)<a class="headerlink" href="#lab-5-data-drive-it-chapters-13-14" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Turn Lab 4's test into a data-driven one, with login credentials and the expected outcome
+loaded from a YAML file via fixtures.</p>
+<p><strong>Steps.</strong>
+1. Create <code>users.yaml</code> with a few users (<code>standard_user</code> should succeed; <code>locked_out_user</code> should be
+   blocked).
+2. Load it in <code>conftest.py</code> and use <code>pytest_generate_tests</code> to parametrize a <code>test_login(scenario)</code>.
+3. Each case asserts success or the expected error, per its <code>expect_ok</code> field.</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>Model each row as a frozen dataclass; parse it at load (Chapter 21 pattern).</li>
+<li><code>pytest_generate_tests(metafunc)</code> should check <code>if "scenario" in metafunc.fixturenames</code>.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>See <a href="../../part3-pytest/14-data-driven-testing/">Chapter 14 §14.4</a> for the <code>pytest_generate_tests</code>
+shape. <em>What you practised:</em> external data, typed loading, and generating one test per row —
+adding a user becomes a YAML edit, not a code change.</p>
+</details>
+<hr />
+<h2 id="lab-6-mock-an-error-state-chapter-29">Lab 6 — Mock an error state (Chapter 29)<a class="headerlink" href="#lab-6-mock-an-error-state-chapter-29" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> On <code>demo.playwright.dev/api-mocking</code>, force the fruit API to return an empty list and an
+error, and assert the UI handles each.</p>
+<p><strong>Steps.</strong>
+1. Use <code>page.route("*/**/api/v1/fruits", handler)</code> to <code>route.fulfill(json=[])</code> and assert the UI
+   shows no fruit.
+2. In a second test, <code>route.fulfill(status=500, json={"error": "boom"})</code> and assert the UI's error
+   handling (or simply that the known fruit does <em>not</em> appear).</p>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>See <a href="../../part7-advanced/29-network-mocking/">Chapter 29 §29.2</a>. <em>What you practised:</em> controlling
+the network to test states a real backend won't reliably produce — and doing so deterministically.</p>
+</details>
+<hr />
+<h2 id="lab-7-mock-three-states-of-a-real-api-chapter-29">Lab 7 — Mock three states of a real API (Chapter 29)<a class="headerlink" href="#lab-7-mock-three-states-of-a-real-api-chapter-29" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Against <code>https://demo.playwright.dev/api-mocking</code>, write <em>three</em> tests that force the
+fruit API into three different states and assert how the UI handles each: empty, server error, and
+a slow response.</p>
+<p><strong>Steps.</strong>
+1. Test A — fulfil with an empty JSON array; assert no fruit names appear.
+2. Test B — fulfil with <code>status=500</code>; assert an error region/message becomes visible.
+3. Test C — use a real <code>route.fetch()</code> then call <code>time.sleep(0.0)</code> inside the handler (or use
+   <code>page.route</code> with a delayed response via a separate technique) — at minimum, <em>log</em> how long the
+   page took to render with the slow mock. (For a true delay you can implement it in the handler.)</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>Use <code>route.fulfill(json=[])</code> for the empty case and <code>route.fulfill(status=500, json={"error":
+  "boom"})</code> for the error case.</li>
+<li>For "slow," your handler can <code>import time; time.sleep(2)</code> <em>inside</em> the handler — Playwright will
+  simply not respond to the page until the handler returns. (Beware: this slows the test by ~2s
+  too; that's the point of exercising the slow case in isolation.)</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>Each test installs a <code>page.route("*/**/api/v1/fruits", handler)</code> <em>before</em> <code>page.goto(...)</code>, then
+asserts the UI state with <code>expect()</code>. Same locators, three different controlled backends. <em>What
+you practised:</em> deterministic testing of states the live backend won't reliably produce.</p>
+</details>
+<hr />
+<h2 id="lab-8-use-the-api-client-chapter-30">Lab 8 — Use the API client (Chapter 30)<a class="headerlink" href="#lab-8-use-the-api-client-chapter-30" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Use <code>playwright.request.new_context</code> to exercise a public REST API directly — no browser.</p>
+<p><strong>Steps.</strong>
+1. Build an <code>APIRequestContext</code> for <code>https://jsonplaceholder.typicode.com</code> in a session-scoped
+   fixture, with <code>extra_http_headers={"Content-Type": "application/json"}</code>.
+2. Write a test that POSTs <code>{"title": "lab", "body": "hi", "userId": 1}</code> to <code>/posts</code> and asserts
+   <code>response.ok</code> and that the parsed <code>json()</code> echoes back the title.
+3. Write a second test that GETs <code>/posts/1</code> and asserts the JSON has a non-empty <code>title</code>.</p>
+<details class="note">
+<summary>Hints</summary>
+<ul>
+<li>JSONPlaceholder is a sandbox — it doesn't really persist anything, but it responds correctly,
+  which is what you need to practise the <em>API client</em>.</li>
+<li><code>request_context.dispose()</code> after the <code>yield</code> in your fixture.</li>
+</ul>
+</details>
+<details class="success">
+<summary>Solution sketch</summary>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">api</span><span class="p">(</span><span class="n">playwright</span><span class="p">):</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">playwright</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">new_context</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://jsonplaceholder.typicode.com&quot;</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">yield</span> <span class="n">ctx</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">ctx</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_create_post</span><span class="p">(</span><span class="n">api</span><span class="p">):</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/posts&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;lab&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">assert</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">assert</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;lab&quot;</span>
+</span></code></pre></div>
+<em>What you practised:</em> the standalone API client. The next step in real work — covered in
+<a href="../../part7-advanced/30-api-testing/">Chapter 30</a> — is to combine an API setup with a UI assertion
+on an app you own, where the API actually persists.</p>
+</details>
+<hr />
+<h2 id="lab-9-assert-structure-with-an-aria-snapshot-chapter-31">Lab 9 — Assert structure with an aria snapshot (Chapter 31)<a class="headerlink" href="#lab-9-assert-structure-with-an-aria-snapshot-chapter-31" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> On <code>playwright.dev</code>, capture an aria snapshot of the page header and use it as an
+assertion.</p>
+<p><strong>Steps.</strong>
+1. Navigate to <code>https://playwright.dev</code>.
+2. Print <code>page.get_by_role("banner").aria_snapshot()</code> to see the YAML structure.
+3. Trim that YAML to just the structural elements you care about (a couple of nav links) and feed it
+   into <code>expect(...).to_match_aria_snapshot(...)</code>. Confirm the test passes (partial matching is the
+   default).
+4. Add a deliberately wrong line (a link that doesn't exist) and watch the assertion fail.</p>
+<details class="success">
+<summary>Solution sketch</summary>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">expect</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_by_role</span><span class="p">(</span><span class="s2">&quot;banner&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_match_aria_snapshot</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s2">  - banner:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s2">    - link &quot;Playwright&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s2">    - navigation:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">      - link &quot;Docs&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<em>What you practised:</em> asserting page <em>structure</em> (meaning) rather than appearance — far more
+stable than pixel-diffing.</p>
+</details>
+<hr />
+<h2 id="lab-10-codegen-then-refactor-chapter-32">Lab 10 — Codegen, then refactor (Chapter 32)<a class="headerlink" href="#lab-10-codegen-then-refactor-chapter-32" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Use the recorder to draft a test quickly, then refactor it into a Page Object — the
+correct codegen workflow.</p>
+<p><strong>Steps.</strong>
+1. Run <code>playwright codegen --target python-pytest https://www.saucedemo.com</code>. In the browser, log
+   in (e.g. <code>standard_user</code> / <code>secret_sauce</code>) and click a product.
+2. Copy the generated Python into a new test file and run it; confirm it passes.
+3. Refactor: move every selector into <code>LoginPage</code>/<code>ProductsPage</code> components with <code>_SEL_</code> constants;
+   keep the test body free of selectors. Re-run; still passes.</p>
+<details class="success">
+<summary>Solution sketch</summary>
+<p>The point isn't the specific selectors codegen produced — they'll vary — it's the refactor. Your
+final test should look like
+<code>LoginPage(page).login("standard_user", "secret_sauce"); ProductsPage(page).click("Sauce Labs
+Backpack"); expect(...).to_be_visible()</code>. <em>What you practised:</em> using codegen as a <em>first
+draft</em>, then applying architecture. Never ship raw codegen output.</p>
+</details>
+<hr />
+<h2 id="lab-11-drive-the-trace-viewer-chapter-24">Lab 11 — Drive the Trace Viewer (Chapter 24)<a class="headerlink" href="#lab-11-drive-the-trace-viewer-chapter-24" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Capture and replay a trace, so the tool isn't unfamiliar the first time a CI failure hands
+you one.</p>
+<p><strong>Steps.</strong>
+1. Write any small test that navigates and clicks. Force a failure by changing one locator to
+   something that doesn't exist (e.g. <code>page.get_by_role("button", name="Does Not Exist").click()</code>).
+2. Run it with <code>uv run pytest --tracing=on</code>. Locate the produced <code>trace.zip</code> under <code>test-results/</code>.
+3. Open it: <code>uv run playwright show-trace test-results/.../trace.zip</code>. Step through the timeline,
+   hover an action, and inspect the <strong>before/after DOM snapshot</strong>. Read the network and console
+   panels.</p>
+<details class="success">
+<summary>What to notice</summary>
+<p>The before/after snapshots are the magic — they let you see the DOM state at the exact moment the
+locator failed, so you can tell whether it was a timing problem, a markup change, or just-wrong
+text. That capability is why "capture a trace on failure in CI" is the senior debugging answer.</p>
+</details>
+<hr />
+<h2 id="lab-12-review-the-ai-snippet-cold-chapter-26">Lab 12 — Review the AI snippet cold (Chapter 26)<a class="headerlink" href="#lab-12-review-the-ai-snippet-cold-chapter-26" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Practise the static-review skill before an interview asks you to.</p>
+<p><strong>Steps.</strong>
+1. Without re-reading <a href="../../part5-robustness/26-reviewing-ai-code/">Chapter 26</a>, copy this snippet
+   onto paper:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">sync_playwright</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_search_functionality</span><span class="p">():</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">browser</span> <span class="o">=</span> <span class="n">sync_playwright</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">page</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">new_page</span><span class="p">()</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">&quot;#search&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;playwright testing&quot;</span><span class="p">)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">&quot;.button&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="s2">&quot;.result-item&quot;</span><span class="p">)</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">browser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
+2. In <strong>five minutes</strong>, list every problem you can find and <em>why each matters</em> (not just what it is).
+3. Check yourself against Chapter 26 §26.7. Lead your answer with the highest-impact issue (the one
+   that makes the test unable to fail).</p>
+<details class="success">
+<summary>What you practised</summary>
+<p>The reviewer's instinct — for <em>every line</em>, ask "does this do the thing its shape implies?"
+AI-generated tests fail by looking right and behaving wrong; spotting that gap is the entire
+point of being a senior reviewer.</p>
+</details>
+<hr />
+<h2 id="capstone-lab-your-own-miniature-suite">Capstone lab — your own miniature suite<a class="headerlink" href="#capstone-lab-your-own-miniature-suite" title="Permanent link">&para;</a></h2>
+<p><strong>Goal.</strong> Combine Labs 3–6 into a small, properly-layered project: <code>components/</code> (LoginPage,
+ProductsPage, CartPage), <code>services/</code> (ShoppingService), <code>db/data.yaml</code> (users + scenarios),
+<code>tests/</code> (a unit test for price parsing, a smoke test, a data-driven e2e), and a GitHub Actions
+workflow (Chapter 25). Add an Allure report with <code>allure.step</code> phases.</p>
+<p>When it builds green and you can <em>narrate</em> the path of one test from fixture to browser and back
+(<a href="../../part6-capstone/27-building-the-ebay-suite/">Chapter 27</a>), you have built — and can defend — a
+real framework.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Key idea</p>
+<p>You learn this craft by building it. These labs walk the same arc as the whole book: a robust
+single test → a unit-tested pure function → a Page Object → a service → data-driven → mocking → a
+complete layered suite. Do them in order, attempt before peeking, and refactor as you go — that
+refactoring <em>is</em> the learning.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../part7-advanced/32-codegen-and-debugging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 32 — Authoring Tools &amp;amp; Advanced Debugging">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chapter 32 — Authoring Tools &amp; Advanced Debugging
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../34-self-check-quizzes/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 34 — Self-Check Quizzes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Chapter 34 — Self-Check Quizzes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
