@@ -1,0 +1,1 @@
+import{Q as f,q as u,R as _,T as o,n as t,U as g,V as i,y as l,x as n,z as p,W as m}from"./BENzhYWa.js";function T(d,r){let s=null,y=t;var a;if(t){s=p;for(var e=m(document.head);e!==null&&(e.nodeType!==g||e.data!==d);)e=i(e);if(e===null)l(!1);else{var E=i(e);e.remove(),n(E)}}t||(a=document.head.appendChild(f()));try{u(()=>r(a),_|o)}finally{y&&(l(!0),n(s))}}export{T as h};
