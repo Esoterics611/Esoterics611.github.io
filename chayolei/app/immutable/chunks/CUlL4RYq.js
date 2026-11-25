@@ -1,1 +1,0 @@
-import"./Bzak7iHL.js";import{s as e,r as p}from"./DsEyyW9P.js";import{I as a}from"./BOnw1slx.js";function c(o,r){let t=p(r,["$$slots","$$events","$$legacy"]);const s={name:"arrow-left",size:24,node:[["path",{d:"m12 19-7-7 7-7"}],["path",{d:"M19 12H5"}]]};a(o,e(()=>t,{get icon(){return s}}))}export{c as A};

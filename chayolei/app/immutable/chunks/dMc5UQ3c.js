@@ -1,0 +1,1 @@
+import"./Bzak7iHL.js";import{s as c,r as t}from"./LrfqMh5C.js";import{I as a}from"./B6Wcuug4.js";function l(r,e){let s=t(e,["$$slots","$$events","$$legacy"]);const o={name:"circle-x",size:24,node:[["circle",{cx:"12",cy:"12",r:"10"}],["path",{d:"m15 9-6 6"}],["path",{d:"m9 9 6 6"}]],aliases:["x-circle"]};a(r,c(()=>s,{get icon(){return o}}))}export{l as C};

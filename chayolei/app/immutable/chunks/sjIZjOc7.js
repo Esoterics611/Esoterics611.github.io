@@ -1,0 +1,1 @@
+import{W as f,q as _,an as o,ao as u,n as t,_ as g,am as i,y as l,x as n,z as m,Y as p}from"./pCFFIXSQ.js";function x(d,r){let a=null,y=t;var s;if(t){a=m;for(var e=p(document.head);e!==null&&(e.nodeType!==g||e.data!==d);)e=i(e);if(e===null)l(!1);else{var E=i(e);e.remove(),n(E)}}t||(s=document.head.appendChild(f()));try{_(()=>r(s),o|u)}finally{y&&(l(!0),n(a))}}export{x as h};
