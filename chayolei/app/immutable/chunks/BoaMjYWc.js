@@ -1,0 +1,1 @@
+import"./Bzak7iHL.js";import{s as a,r as e}from"./DsEyyW9P.js";import{I as p}from"./BOnw1slx.js";function m(t,o){let r=e(o,["$$slots","$$events","$$legacy"]);const s={name:"rotate-ccw",size:24,node:[["path",{d:"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"}],["path",{d:"M3 3v5h5"}]]};p(t,a(()=>r,{get icon(){return s}}))}export{m as R};
