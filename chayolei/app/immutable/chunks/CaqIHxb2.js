@@ -1,1 +1,0 @@
-import"./Bzak7iHL.js";import{s as e,r as p}from"./LrfqMh5C.js";import{I as a}from"./lcbm6bMI.js";function m(o,r){let t=p(r,["$$slots","$$events","$$legacy"]);const s={name:"lock",size:24,node:[["rect",{width:"18",height:"11",x:"3",y:"11",rx:"2",ry:"2"}],["path",{d:"M7 11V7a5 5 0 0 1 10 0v4"}]]};a(o,e(()=>t,{get icon(){return s}}))}export{m as L};

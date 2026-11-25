@@ -1,0 +1,1 @@
+import"./Bzak7iHL.js";import{s as t,r as s}from"./LrfqMh5C.js";import{I as a}from"./DK8_Fazd.js";function l(r,c){let e=s(c,["$$slots","$$events","$$legacy"]);const o={name:"target",size:24,node:[["circle",{cx:"12",cy:"12",r:"10"}],["circle",{cx:"12",cy:"12",r:"6"}],["circle",{cx:"12",cy:"12",r:"2"}]]};a(r,t(()=>e,{get icon(){return o}}))}export{l as T};
